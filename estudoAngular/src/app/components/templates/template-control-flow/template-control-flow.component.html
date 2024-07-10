@@ -1,19 +1,93 @@
 <h2>Control flow</h2>
- 
-<!-- Nova forma -->
+ <h3>IF e FOR</h3>
+<!-- Nova forma
 
-@if (isTrue) {
-    <p>Caso seja verdadeiro</p>
+@if (itens; as data) {
+    <ul>
+        @for (
+            item of data; track item.name;
+            let i = $index;
+            let c = $count;
+            let f = $first;
+            let l = $last;
+            let e = $even;
+            let o = $odd;
+            ) {
+                <p>nome {{item.name}}</p>
+                <p>index {{i}}</p>
+                <p>count {{c}}</p>
+                <p>first {{f}}</p>
+                <p>last {{l}}</p>
+                <p>even {{e}}</p>
+                <p>odd {{o}}</p>
+        }
+    </ul>
 } @else {
-    <p>Caso seja Falso</p>
-}
+    <p>Carregando...</p>
+} -->
 
 <!-- Forma antiga -->
 
-<div *ngIf="isTrue; else isFalse">
-    <p>Caso seja verdadeiro</p>
-</div>
+<!-- <ng-container *ngIf="loadingData$ | async as data; else loading">
+    <ul>
+        <ng-container *ngFor="let item of data; trackBy: trackByFn">
+            <li>{{item}}</li>
+        </ng-container>
+    </ul>
+</ng-container>
 
-<ng-template #isFalse>
-    <p>Caso seja Falso</p>
-</ng-template>
+<ng-template #loading>
+    <p>Carregando...</p>
+</ng-template> -->
+
+@for (item of itens; track item.name) {
+
+   <li>{{item.name}}</li>
+} @empty {
+    <p>Vazio</p>
+}
+
+<input #name >
+<button (click)="addName(name.value)">Add</button>
+
+<ul>
+    <ng-container *ngIf="itens.length === 0; else itemExist">
+        <p>Vazio</p>
+    </ng-container>
+    <ng-template #itemExist>
+        <ng-container *ngFor="let item of itens">
+            <li>{{item.name}}</li>
+        </ng-container>
+    </ng-template>
+</ul>
+
+<h2>Swift Case</h2>
+
+<h3>Versão nova</h3>
+@switch (condition) {
+    @case ("A") {
+        <p>Case A</p>
+    }
+
+    @case ("B") {
+        <p>Case B</p>
+    }
+
+    @default {
+        <p>Default</p>
+    }
+}
+
+<h3>versão antiga</h3>
+
+<ng-container [ngSwitch]="condition">
+    <ng-container *ngSwitchCase="'A'">
+        <p>Case A</p>
+    </ng-container>
+    <ng-container *ngSwitchCase="'C'">
+        <p>Case C</p>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+        <p>Default</p>
+    </ng-container>
+</ng-container>
