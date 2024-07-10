@@ -1,1 +1,20 @@
-<p>template-deferrable-views works!</p>
+<h2>Deferrable Views</h2>
+<!-- 
+
+    idle - vem por padrão, carrega o conteudo quando a pagina é carregada
+    timer - carrega o conteudo depois de um tempo pré definido
+    viewport - carrega o conteudo quando o elemento estiver visivel na tela
+    interaction - carrega o conteudo quando o usuario interage com o elemento
+    hover - carrega o conteudo quando o usuario passa o mouse por cima do elemento
+    immediate - carrega o conteudo imediatamente
+    prefetch - carrega o conteudo antes de ser exibido
+-->
+@defer (on hover) {
+    <app-new-component></app-new-component>
+} @placeholder {
+    <p>Item precisa ser carregado</p>
+} @loading {
+    <p>Carregando...</p>
+} @error {
+    <p>Erro ao carregar</p>
+}
