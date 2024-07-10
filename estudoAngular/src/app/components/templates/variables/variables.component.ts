@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-variables',
@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './variables.component.html',
   styleUrl: './variables.component.scss'
 })
-export class VariablesComponent {
+export class VariablesComponent implements AfterViewInit {
+  @ViewChild('name') public nameInput!: ElementRef;
+
+  ngAfterViewInit(): void {
+    console.log(this.nameInput.nativeElement.value);
+  }
 
 }
