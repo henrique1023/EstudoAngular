@@ -1,0 +1,27 @@
+<h2>Template</h2>
+<p>{{title}}</p>
+<p>{{1 + 1}}</p>
+<p>{{'Hello ' + name}}</p>
+<p>{{name.length}}</p>
+<p>{{name.toUpperCase()}}</p>
+
+<h2>Property Binding</h2>
+<button [disabled]="isDisabled">Teste botão</button>
+
+<h2>Attribute binding</h2>
+<button [attr.aria-label]="name" [attr.title]="name">Teste botão</button>
+
+<h2>Class and Style binding</h2>
+<p [class.teste-p]="true">Teste Class and Style, ele aceita if, se for true insere, se for falso ele não insere</p>
+
+<h2>Event binding</h2>
+<p>{{age}}</p>
+<button (click)="sum()">+</button>
+
+<h2>Two-way data binding</h2>
+<input [(ngModel)]="name" placeholder="Nome">
+
+<h2>Diretivas de atributos</h2>
+<div [ngClass]="{'teste-p':true}">Diretivas de atributos</div>
+
+<app-variables></app-variables>
