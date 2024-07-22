@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NewComponent } from '../../new/new.component';
 
 @Component({
@@ -9,5 +9,5 @@ import { NewComponent } from '../../new/new.component';
   styleUrl: './template-deferrable-views.component.scss'
 })
 export class TemplateDeferrableViewsComponent {
-
+  @Input() title!: string;
 }
